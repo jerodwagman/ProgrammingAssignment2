@@ -11,13 +11,13 @@ makeCacheMatrix <- function(input_matrix) {
                 inverse_matrix <<- NULL ## cache to parent calc. inverse flag
         }
         
-        ## store in current environment input_matrix
+        ## grab input_matrix
         get_input <- function() input_matrix
         
         ## cache to parent the solved inverse
         set_inverse <- function(inverse_sol) inverse_matrix <<- inverse_sol
         
-        ## store in current environment the solved inverse
+        ## grab the solved inverse
         get_inverse <- function() inverse_matrix
         
         ## create a 'special matrix' list of the above gets and sets
@@ -37,7 +37,7 @@ makeCacheMatrix <- function(input_matrix) {
 
 cacheSolve <- function(input_matrix_list, ...) {
         
-        # grabs either the inverse solution or NULL, NULL flagging calc. needed
+        # grabs either an inverse solution or NULL, NULL flagging calc. needed
         inverse_matrix <- input_matrix_list$get_inverse()
         
         # if inverse_matrix not NULL, no calc. needed
